@@ -3,178 +3,345 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Muhamad Rijal Abdulatif - Web Developer</title>
-<meta name="description" content="Portofolio Muhamad Rijal Abdulatif, Web Developer: company profile, sistem transportasi hauling, dan website toko online.">
+<title>Muhamad Rijal Abdulatif · Web Developer</title>
+<meta name="description" content="Portofolio Muhamad Rijal Abdulatif, web developer: company profile, sistem operasional seperti hauling dan HRIS, serta toko online.">
+<meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14181B" media="(prefers-color-scheme: dark)">
+
+<!-- Pasang tema sebelum halaman tampil supaya tidak berkedip -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('tema');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+/* ---------- Warna ---------- */
 :root{
-  --bg:#F4F6F8; --surface:#FFFFFF; --ink:#0F1B2D; --muted:#55667A;
-  --line:#D9E0E8; --accent:#1F5FBF; --accent-ink:#FFFFFF; --soft:#E6EDF6;
-  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
-  --body:'DM Sans','Segoe UI',system-ui,sans-serif;
+  --bg:#F2F4F3;
+  --surface:#FFFFFF;
+  --ink:#1B2220;
+  --muted:#5C6764;
+  --line:#D6DCDA;
+  --soft:#E6EBE9;
+  --accent:#2F3EA0;
+  --accent-ink:#FFFFFF;
+  --invert-bg:#1B2220;
+  --invert-ink:#F2F4F3;
+  --invert-muted:#A9B3B0;
+  --invert-line:#36403D;
+  --shadow:0 1px 2px rgba(27,34,32,.06), 0 12px 32px -18px rgba(27,34,32,.25);
+  --font:'Schibsted Grotesk', ui-sans-serif, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color-scheme:light;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --bg:#0E1622; --surface:#152133; --ink:#EAF0F7; --muted:#9AABBE;
-    --line:#26364B; --accent:#6EA2F0; --accent-ink:#0E1622; --soft:#1B2A40;
+    --bg:#14181B; --surface:#1B2024; --ink:#E7EBE9; --muted:#9AA4A1;
+    --line:#2B3236; --soft:#22292D; --accent:#A3AEFF; --accent-ink:#14181B;
+    --invert-bg:#E7EBE9; --invert-ink:#14181B; --invert-muted:#4F5A57; --invert-line:#C5CCCA;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 16px 40px -20px rgba(0,0,0,.6);
+    color-scheme:dark;
   }
 }
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;font-size:17px}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.02em}
-
-header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{font-family:var(--display);font-weight:700;text-decoration:none}
-nav{display:flex;gap:26px;font-size:15px}
-nav a{text-decoration:none;color:var(--muted)}
-nav a:hover{color:var(--ink)}
-
-.hero{padding:88px 0 72px}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
-.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:700}
-.hero p.lead{margin:22px 0 32px;font-size:19px;color:var(--muted);max-width:30em}
-.btns{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;font-size:16px}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{filter:brightness(1.08)}
-.btn.ghost{border:1.5px solid var(--line);background:var(--surface)}
-.btn.ghost:hover{border-color:var(--accent)}
-
-.frame{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.frame .bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
-.frame .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
-.hero .frame{box-shadow:0 24px 60px -28px rgba(15,27,45,.45);transform:rotate(1.5deg)}
-.facts{list-style:none;padding:26px;display:grid;gap:18px}
-.facts li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:14px}
-.facts li:last-child{border:0;padding:0}
-.facts b{font-family:var(--display);font-size:18px}
-.facts span{color:var(--muted);text-align:right;font-size:15px}
-
-section{padding:72px 0;border-top:1px solid var(--line)}
-section h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
-section .sub{color:var(--muted);max-width:36em;margin-bottom:40px}
-
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.service{padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
-.service h3{font-size:21px;margin-bottom:8px}
-.service p{color:var(--muted);font-size:16px}
-
-.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
-.filters button{font:inherit;font-size:15px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
-.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
-.project .shot{aspect-ratio:16/10;background:var(--soft);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;padding:16px}
-.project .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.project .info{padding:20px 22px 24px}
-.project h3{font-size:20px;margin-bottom:6px}
-.project p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-.tags span{font-size:13px;padding:3px 10px;border-radius:6px;background:var(--soft)}
-.project a.visit{font-weight:600;font-size:15px;color:var(--accent);text-decoration:none}
-.project a.visit:hover{text-decoration:underline}
-
-.stack{display:flex;flex-wrap:wrap;gap:10px}
-.stack span{padding:9px 16px;border:1px solid var(--line);background:var(--surface);border-radius:10px;font-weight:500;font-size:15.5px}
-
-.contact{background:var(--ink);color:var(--bg);border-top:0}
-.contact h2{color:var(--bg)}
-.contact .sub{color:color-mix(in srgb,var(--bg) 70%,transparent)}
-.contact .btn.primary{background:var(--bg);color:var(--ink)}
-.contact .btn.ghost{background:transparent;border-color:color-mix(in srgb,var(--bg) 35%,transparent);color:var(--bg)}
-footer{padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
-
-@media (max-width:820px){
-  .hero{padding:48px 0}
-  .hero .wrap{grid-template-columns:1fr}
-  .hero .frame{transform:none}
-  .services{grid-template-columns:1fr}
-  nav{gap:16px;font-size:14px}
+:root[data-theme="dark"]{
+  --bg:#14181B; --surface:#1B2024; --ink:#E7EBE9; --muted:#9AA4A1;
+  --line:#2B3236; --soft:#22292D; --accent:#A3AEFF; --accent-ink:#14181B;
+  --invert-bg:#E7EBE9; --invert-ink:#14181B; --invert-muted:#4F5A57; --invert-line:#C5CCCA;
+  --shadow:0 1px 2px rgba(0,0,0,.3), 0 16px 40px -20px rgba(0,0,0,.6);
+  color-scheme:dark;
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---------- Dasar ---------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  transition:background-color .25s ease,color .25s ease;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-weight:600;letter-spacing:-.025em;line-height:1.1}
+.skip{position:absolute;left:-999px;top:12px;background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:6px;z-index:50}
+.skip:focus{left:12px}
+
+/* ---------- Header ---------- */
+header{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--bg) 85%,transparent);
+  backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);
+  border-bottom:1px solid transparent;transition:border-color .2s;
+}
+header.scrolled{border-bottom-color:var(--line)}
+header .wrap{display:flex;align-items:center;gap:32px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;letter-spacing:-.01em}
+.brand .mark{
+  width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--bg);
+  display:grid;place-items:center;font-size:14px;font-weight:700;letter-spacing:-.04em;
+}
+nav{display:flex;gap:28px;margin-left:auto;font-size:15px}
+nav a{text-decoration:none;color:var(--muted);transition:color .15s}
+nav a:hover{color:var(--ink)}
+.theme-btn{
+  width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--surface);
+  color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:border-color .15s;
+}
+.theme-btn:hover{border-color:var(--muted)}
+.theme-btn svg{width:18px;height:18px}
+.theme-btn .moon{display:none}
+:root[data-theme="dark"] .theme-btn .sun{display:none}
+:root[data-theme="dark"] .theme-btn .moon{display:block}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .theme-btn .sun{display:none}
+  :root:not([data-theme="light"]) .theme-btn .moon{display:block}
+}
+
+/* ---------- Hero ---------- */
+.hero{padding:96px 0 88px}
+.who{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:16px;margin-bottom:28px}
+.who .dot{width:8px;height:8px;border-radius:50%;background:#2E9E6A;box-shadow:0 0 0 4px color-mix(in srgb,#2E9E6A 18%,transparent)}
+.hero h1{font-size:clamp(42px,7.2vw,92px);font-weight:600;letter-spacing:-.045em;line-height:.98;max-width:13ch}
+.hero .lead{margin-top:30px;font-size:clamp(18px,1.6vw,20px);color:var(--muted);max-width:34em;line-height:1.55}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:10px;
+  font-weight:500;font-size:16px;text-decoration:none;border:1px solid transparent;
+  transition:background-color .15s,border-color .15s,color .15s,transform .15s;
+}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{border-color:var(--line);background:var(--surface)}
+.btn.ghost:hover{border-color:var(--ink)}
+
+.index{margin-top:80px;border-top:1px solid var(--line)}
+.index a{
+  display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:24px;align-items:baseline;
+  padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .2s,color .15s;
+}
+.index a:hover{padding-left:10px;color:var(--accent)}
+.index b{font-weight:600;font-size:19px;letter-spacing:-.01em}
+.index span{color:var(--muted);font-size:15px}
+.index span:last-child{text-align:right}
+
+/* Satu momen animasi: hero saat halaman dibuka */
+@media (prefers-reduced-motion:no-preference){
+  .hero .in{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero .in:nth-child(2){animation-delay:.08s}
+  .hero .in:nth-child(3){animation-delay:.16s}
+  .hero .in:nth-child(4){animation-delay:.24s}
+  .hero .in:nth-child(5){animation-delay:.36s}
+  @keyframes rise{to{opacity:1;transform:none}}
+}
+
+/* ---------- Section umum ---------- */
+section{padding:100px 0}
+.head{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:end;margin-bottom:56px}
+.head h2{font-size:clamp(32px,4.4vw,52px)}
+.head p{color:var(--muted);max-width:32em}
+
+/* ---------- Layanan ---------- */
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.service{border-top:2px solid var(--ink);padding-top:24px}
+.service svg{width:28px;height:28px;color:var(--accent);margin-bottom:20px}
+.service h3{font-size:22px;margin-bottom:10px}
+.service p{color:var(--muted);font-size:16px}
+.service ul{list-style:none;margin-top:18px;display:grid;gap:6px;font-size:15px}
+.service li{display:flex;gap:10px}
+.service li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--muted);margin-top:.62em;flex:none}
+
+/* ---------- Proyek ---------- */
+#proyek{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.filters{display:inline-flex;gap:4px;padding:4px;border-radius:12px;background:var(--soft);margin-bottom:44px;flex-wrap:wrap}
+.filters button{
+  font:inherit;font-size:15px;padding:8px 16px;border-radius:9px;border:0;background:transparent;
+  color:var(--muted);cursor:pointer;display:inline-flex;gap:8px;align-items:center;transition:background-color .15s,color .15s;
+}
+.filters button:hover{color:var(--ink)}
+.filters button small{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.filters button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:56px 40px}
+.project .shot{
+  aspect-ratio:16/10;border-radius:14px;overflow:hidden;background:var(--soft);
+  border:1px solid var(--line);position:relative;
+}
+.project .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.project:hover .shot img{transform:scale(1.025)}
+.placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:28px;
+  background:
+    linear-gradient(var(--line) 1px,transparent 1px) 0 0/100% 32px,
+    var(--soft);
+}
+.placeholder strong{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;line-height:1.05;max-width:12ch}
+.placeholder span{font-size:14px;color:var(--muted)}
+.project .meta{display:flex;justify-content:space-between;gap:16px;margin-top:22px;align-items:baseline}
+.project h3{font-size:24px}
+.project h3 a{text-decoration:none}
+.project h3 a:hover{color:var(--accent)}
+.project .cat{font-size:14px;color:var(--muted);white-space:nowrap}
+.project p{color:var(--muted);margin-top:8px;max-width:36em}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.tags span{font-size:13px;padding:4px 10px;border-radius:6px;border:1px solid var(--line);color:var(--muted)}
+.project .visit{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-weight:500;font-size:15px;color:var(--accent);text-decoration:none}
+.project .visit:hover{text-decoration:underline;text-underline-offset:3px}
+.project .visit svg{width:14px;height:14px}
+
+/* ---------- Teknologi ---------- */
+.stack{border-top:1px solid var(--line)}
+.stack .row{display:grid;grid-template-columns:220px 1fr;gap:32px;padding:26px 0;border-bottom:1px solid var(--line)}
+.stack dt{font-weight:600}
+.stack dd{display:flex;flex-wrap:wrap;gap:10px 28px;color:var(--muted)}
+.stack dd span{color:var(--ink);font-size:18px}
+
+/* ---------- Kontak ---------- */
+.contact{background:var(--invert-bg);color:var(--invert-ink);padding:110px 0 64px}
+.contact h2{font-size:clamp(36px,6vw,76px);letter-spacing:-.04em;line-height:1;max-width:14ch}
+.contact .sub{color:var(--invert-muted);max-width:32em;margin-top:24px;font-size:18px}
+.mail{
+  display:inline-block;margin-top:48px;font-size:clamp(22px,3.4vw,40px);font-weight:500;letter-spacing:-.02em;
+  text-decoration:none;border-bottom:2px solid var(--invert-line);padding-bottom:6px;transition:border-color .2s;
+  word-break:break-word;
+}
+.mail:hover{border-bottom-color:var(--invert-ink)}
+.links{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.links a{
+  display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:10px;
+  border:1px solid var(--invert-line);text-decoration:none;font-size:15px;transition:border-color .15s,background-color .15s;
+}
+.links a:hover{border-color:var(--invert-ink)}
+.links svg{width:17px;height:17px}
+.foot{
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:96px;padding-top:24px;
+  border-top:1px solid var(--invert-line);color:var(--invert-muted);font-size:14px;
+}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--invert-ink)}
+
+/* ---------- Responsif ---------- */
+@media (max-width:900px){
+  .head{grid-template-columns:1fr;gap:16px}
+  .services{grid-template-columns:1fr;gap:36px}
+  .projects{grid-template-columns:1fr;gap:56px}
+  .stack .row{grid-template-columns:1fr;gap:10px}
+}
+@media (max-width:720px){
+  nav{display:none}
+  .theme-btn{margin-left:auto}
+  .hero{padding:56px 0 64px}
+  section{padding:72px 0}
+  .index{margin-top:56px}
+  .index a{grid-template-columns:1fr auto;gap:4px 16px}
+  .index span:nth-child(2){grid-row:2;grid-column:1}
+  .index span:last-child{grid-row:1 / span 2;grid-column:2;align-self:center}
+  .contact{padding:80px 0 48px}
+  .foot{margin-top:64px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none !important}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#isi">Lewati ke konten</a>
 
-<header>
+<header id="top">
   <div class="wrap">
-    <a class="brand" href="#atas">Rijal</a>
+    <a class="brand" href="#isi" aria-label="Muhamad Rijal Abdulatif, ke atas">
+      <span class="mark" aria-hidden="true">RA</span>
+      <span>Rijal Abdulatif</span>
+    </a>
     <nav aria-label="Navigasi utama">
       <a href="#layanan">Layanan</a>
       <a href="#proyek">Proyek</a>
       <a href="#teknologi">Teknologi</a>
       <a href="#kontak">Kontak</a>
     </nav>
+    <button class="theme-btn" id="themeBtn" type="button" aria-label="Ganti mode terang atau gelap">
+      <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z"/></svg>
+    </button>
   </div>
 </header>
 
-<main id="atas">
+<main id="isi">
   <div class="hero">
     <div class="wrap">
-      <div>
-        <h1>Muhamad Rijal Abdulatif</h1>
-        <p class="lead">Web Developer yang membangun company profile, sistem operasional perusahaan, dan toko online yang rapi, cepat, dan mudah dipakai.</p>
-        <div class="btns">
-          <a class="btn primary" href="#proyek">Lihat proyek saya</a>
-          <a class="btn ghost" href="#kontak">Hubungi saya</a>
-        </div>
+      <!-- Hapus baris "Menerima proyek baru" jika sedang tidak menerima proyek -->
+      <p class="who in"><span class="dot" aria-hidden="true"></span>Muhamad Rijal Abdulatif, web developer. Menerima proyek baru.</p>
+      <h1 class="in">Website dan sistem yang membuat bisnis berjalan lebih rapi.</h1>
+      <p class="lead in">Saya membangun company profile, aplikasi operasional seperti sistem hauling dan HRIS, serta toko online. Fokus saya: tampilan yang jelas, data yang tertata, dan alur yang mudah dipakai tim Anda.</p>
+      <div class="btns in">
+        <a class="btn primary" href="#proyek">Lihat proyek</a>
+        <a class="btn ghost" href="#kontak">Diskusikan proyek Anda</a>
       </div>
-      <div class="frame" aria-label="Ringkasan">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <ul class="facts">
-          <li><b>Company profile</b><span>Website perusahaan</span></li>
-          <li><b>Sistem hauling</b><span>Transportasi &amp; operasional</span></li>
-          <li><b>Toko online</b><span>Katalog, order, pembayaran</span></li>
-        </ul>
-      </div>
+      <nav class="index in" id="index" aria-label="Daftar proyek"></nav>
     </div>
   </div>
 
   <section id="layanan">
     <div class="wrap">
-      <h2>Yang bisa saya kerjakan</h2>
-      <p class="sub">Dari tampilan yang menyampaikan citra perusahaan sampai sistem yang menjalankan operasional harian.</p>
+      <div class="head">
+        <h2>Yang bisa saya kerjakan</h2>
+        <p>Dari halaman yang memperkenalkan perusahaan Anda, sampai sistem yang dipakai tim setiap hari untuk mencatat, memantau, dan melapor.</p>
+      </div>
       <div class="services">
-        <div class="service">
+        <article class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 13h8M8 16h5"/></svg>
           <h3>Company profile</h3>
-          <p>Website perusahaan yang jelas menjelaskan layanan Anda, tampil baik di ponsel, dan mudah diperbarui.</p>
-        </div>
-        <div class="service">
-          <h3>Sistem transportasi hauling</h3>
-          <p>Aplikasi web untuk mengelola armada, sopir, pengiriman, dan laporan operasional dalam satu tempat.</p>
-        </div>
-        <div class="service">
-          <h3>Website toko online</h3>
-          <p>Toko online dengan katalog produk, keranjang, dan proses pemesanan yang sederhana bagi pembeli.</p>
-        </div>
+          <p>Website yang menjelaskan siapa Anda dan apa yang Anda tawarkan, dengan cara yang mudah dipahami calon klien.</p>
+          <ul><li>Tampil rapi di ponsel dan desktop</li><li>Halaman layanan, galeri, dan kontak</li><li>Mudah diperbarui</li></ul>
+        </article>
+        <article class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+          <h3>Sistem operasional</h3>
+          <p>Aplikasi web untuk pekerjaan harian perusahaan, seperti pengelolaan armada hauling atau data karyawan.</p>
+          <ul><li>Armada, sopir, ritase, dan pembayaran</li><li>Karyawan, cuti, kontrak, dan surat peringatan</li><li>Laporan siap diunduh</li></ul>
+        </article>
+        <article class="service">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h2l2 10h10l2-7H7"/><circle cx="9.5" cy="19" r="1.4"/><circle cx="17" cy="19" r="1.4"/></svg>
+          <h3>Toko online</h3>
+          <p>Toko dengan katalog produk, keranjang, dan proses pemesanan yang singkat bagi pembeli.</p>
+          <ul><li>Katalog dan kategori produk</li><li>Keranjang dan checkout</li><li>Pengelolaan pesanan</li></ul>
+        </article>
       </div>
     </div>
   </section>
 
   <section id="proyek">
     <div class="wrap">
-      <h2>Proyek yang pernah saya buat</h2>
-      <p class="sub">Sebagian karya terbaru. Klik proyek untuk melihat versi langsungnya.</p>
+      <div class="head">
+        <h2>Proyek pilihan</h2>
+        <p>Beberapa pekerjaan terbaru. Proyek yang punya versi publik bisa langsung dikunjungi.</p>
+      </div>
       <div class="filters" id="filters" role="group" aria-label="Filter proyek"></div>
-      <div class="projects" id="projects"></div>
+      <div class="projects" id="projects" aria-live="polite"></div>
     </div>
   </section>
 
   <section id="teknologi">
     <div class="wrap">
-      <h2>Teknologi yang saya gunakan</h2>
-      <p class="sub">Alat yang saya pakai sehari-hari untuk membangun dan merawat website serta sistem.</p>
-      <div class="stack">
-        <span>PHP</span><span>Laravel</span><span>MySQL</span><span>JavaScript</span>
-        <span>Node.js</span><span>React</span><span>Next.js</span>
-        <span>REST API</span><span>Git &amp; GitHub</span>
+      <div class="head">
+        <h2>Teknologi</h2>
+        <p>Alat yang saya pakai sehari-hari untuk membangun dan merawat website serta sistem.</p>
       </div>
+      <dl class="stack">
+        <div class="row"><dt>Backend</dt><dd><span>PHP</span><span>Laravel</span><span>Node.js</span><span>REST API</span></dd></div>
+        <div class="row"><dt>Frontend</dt><dd><span>JavaScript</span><span>React</span><span>Next.js</span></dd></div>
+        <div class="row"><dt>Database</dt><dd><span>MySQL</span></dd></div>
+        <div class="row"><dt>CMS dan alat kerja</dt><dd><span>WordPress</span><span>Git</span><span>GitHub</span></dd></div>
+      </dl>
     </div>
   </section>
 
@@ -182,26 +349,39 @@ footer{padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
     <div class="wrap">
       <h2>Punya proyek website atau sistem?</h2>
       <p class="sub">Ceritakan kebutuhan Anda. Saya akan membalas dengan gambaran solusi dan perkiraan waktu pengerjaan.</p>
-      <div class="btns">
-        <!-- GANTI: email, nomor WhatsApp, GitHub, dan LinkedIn Anda -->
-        <a class="btn primary" href="mailto:mrijalabdulatif@gmail">Kirim email</a>
-        <a class="btn ghost" href="https://wa.me/6287853493215">WhatsApp</a>
-        <a class="btn ghost" href="https://github.com/usernameanda">GitHub</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/mrijalabdulatif">LinkedIn</a>
+
+      <!-- GANTI: pastikan email, WhatsApp, GitHub, dan LinkedIn sudah benar -->
+      <a class="mail" href="mailto:mrijalabdulatif@gmail.com">mrijalabdulatif@gmail.com</a>
+
+      <div class="links">
+        <a href="https://wa.me/6287853493215" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></svg>WhatsApp
+        </a>
+        <a href="https://github.com/usernameanda" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.2-3.4-1.2-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a3.9 3.9 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c2-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7a3.9 3.9 0 0 1 1 2.7c0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/mrijalabdulatif" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg>LinkedIn
+        </a>
+      </div>
+
+      <div class="foot">
+        <span>© <span id="tahun"></span> Muhamad Rijal Abdulatif</span>
+        <a href="#top">Kembali ke atas</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer>© <span id="tahun"></span> Muhamad Rijal Abdulatif</footer>
-
 <script>
 /* ==========================================================
    DAFTAR PROYEK – edit bagian ini saja.
    - gambar: taruh screenshot di folder "images/" lalu isi nama filenya
-     (rekomendasi rasio 16:10, mis. 1280x800 px, format .webp/.jpg)
+     (rasio 16:10, mis. 1600x1000 px, format .webp atau .jpg)
+     Jika gambar belum ada, otomatis tampil kartu nama proyek.
    - link: alamat website langsung; kosongkan ("") jika tidak ada
-   - kategori: "Company Profile", "Sistem", atau "Toko Online"
+   - kategori: pakai nama yang sama persis untuk proyek sejenis,
+     mis. "Company Profile", "Sistem", atau "Toko Online"
    Tambah proyek baru dengan menyalin satu blok { ... }.
    ========================================================== */
 const proyek = [
@@ -216,64 +396,130 @@ const proyek = [
   {
     judul: "Sistem Transportasi Hauling",
     kategori: "Sistem",
-    deskripsi: "Aplikasi web untuk mengelola armada, sopir, performa dan pembayaran dan laporan hauling.",
+    deskripsi: "Aplikasi web untuk mengelola armada, sopir, performa, pembayaran, dan laporan hauling.",
     teknologi: ["Laravel", "MySQL"],
     gambar: "images/hauling-1.jpg",
     link: ""
   },
   {
+    judul: "HRIS",
+    kategori: "Sistem",
+    deskripsi: "Aplikasi web manajemen karyawan: data karyawan, cuti, kontrak, dan surat peringatan.",
+    teknologi: ["Laravel", "MySQL"],
+    gambar: "images/hris-1.jpg",
+    link: ""
+  },
+  {
     judul: "Terve Chocolate",
-    kategori: "Toko Online cokelat",
-    deskripsi: "Toko online dengan katalog produk, keranjang belanja, dan pemesanan.",
-    teknologi: ["Wordpress", "JavaScript"],
+    kategori: "Toko Online",
+    deskripsi: "Toko online cokelat dengan katalog produk, keranjang belanja, dan pemesanan.",
+    teknologi: ["WordPress", "JavaScript"],
     gambar: "images/toko-online-1.jpg",
     link: ""
   }
 ];
 
-const grid = document.getElementById('projects');
-const filters = document.getElementById('filters');
-const kategori = ['Semua', ...new Set(proyek.map(p => p.kategori))];
-let aktif = 'Semua';
+/* ---------- Mode terang / gelap ---------- */
+const root = document.documentElement;
+const media = window.matchMedia('(prefers-color-scheme: dark)');
+const themeBtn = document.getElementById('themeBtn');
 
+function temaAktif() {
+  return root.getAttribute('data-theme') || (media.matches ? 'dark' : 'light');
+}
+function perbaruiTombol() {
+  const gelap = temaAktif() === 'dark';
+  themeBtn.setAttribute('aria-label', gelap ? 'Ganti ke mode terang' : 'Ganti ke mode gelap');
+  themeBtn.title = gelap ? 'Mode terang' : 'Mode gelap';
+}
+themeBtn.addEventListener('click', () => {
+  const baru = temaAktif() === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', baru);
+  try { localStorage.setItem('tema', baru); } catch (e) {}
+  perbaruiTombol();
+});
+media.addEventListener('change', perbaruiTombol);
+perbaruiTombol();
+
+/* Garis bawah header muncul saat halaman digulir */
+const header = document.querySelector('header');
+const cekScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+window.addEventListener('scroll', cekScroll, { passive: true });
+cekScroll();
+
+/* ---------- Render proyek ---------- */
 function el(tag, attrs = {}, children = []) {
   const n = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
   [].concat(children).forEach(c => n.append(c));
   return n;
 }
+const ikonLuar = () => {
+  const s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'none');
+  s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', '2');
+  s.setAttribute('aria-hidden', 'true');
+  s.innerHTML = '<path d="M7 17 17 7M8 7h9v9"/>';
+  return s;
+};
+
+const grid = document.getElementById('projects');
+const filters = document.getElementById('filters');
+const index = document.getElementById('index');
+const kategori = ['Semua', ...new Set(proyek.map(p => p.kategori))];
+let aktif = 'Semua';
+
+function placeholder(p) {
+  return el('div', { class: 'placeholder' }, [el('strong', {}, p.judul), el('span', {}, p.kategori)]);
+}
 
 function render() {
   grid.replaceChildren();
   proyek.filter(p => aktif === 'Semua' || p.kategori === aktif).forEach(p => {
     const shot = el('div', { class: 'shot' });
-    const img = el('img', { src: p.gambar, alt: 'Tampilan proyek ' + p.judul, loading: 'lazy' });
-    img.onerror = () => shot.replaceChildren('Screenshot belum ditambahkan');
-    shot.append(img);
+    if (p.gambar) {
+      const img = el('img', { src: p.gambar, alt: 'Tampilan ' + p.judul, loading: 'lazy', width: '1600', height: '1000' });
+      img.onerror = () => shot.replaceChildren(placeholder(p));
+      shot.append(img);
+    } else {
+      shot.append(placeholder(p));
+    }
 
-    const info = el('div', { class: 'info' }, [
-      el('h3', {}, p.judul),
+    const judul = p.link
+      ? el('h3', {}, el('a', { href: p.link, target: '_blank', rel: 'noopener' }, p.judul))
+      : el('h3', {}, p.judul);
+
+    const card = el('article', { class: 'project' }, [
+      shot,
+      el('div', { class: 'meta' }, [judul, el('span', { class: 'cat' }, p.kategori)]),
       el('p', {}, p.deskripsi),
       el('div', { class: 'tags' }, p.teknologi.map(t => el('span', {}, t)))
     ]);
-    if (p.link) info.append(el('a', { class: 'visit', href: p.link, target: '_blank', rel: 'noopener' }, 'Kunjungi website'));
-
-    const card = el('article', { class: 'frame project' }, [
-      el('div', { class: 'bar' }, [el('i'), el('i'), el('i')]),
-      shot, info
-    ]);
+    if (p.link) {
+      card.append(el('a', { class: 'visit', href: p.link, target: '_blank', rel: 'noopener' }, ['Kunjungi website', ikonLuar()]));
+    }
     grid.append(card);
   });
 }
 
 kategori.forEach(k => {
-  const b = el('button', { type: 'button', 'aria-pressed': k === aktif }, k);
-  b.onclick = () => {
+  const jumlah = k === 'Semua' ? proyek.length : proyek.filter(p => p.kategori === k).length;
+  const b = el('button', { type: 'button', 'aria-pressed': String(k === aktif) }, [k, el('small', {}, String(jumlah))]);
+  b.addEventListener('click', () => {
     aktif = k;
-    filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
     render();
-  };
+  });
   filters.append(b);
+});
+
+/* Daftar ringkas proyek di hero */
+proyek.forEach(p => {
+  index.append(el('a', { href: '#proyek' }, [
+    el('b', {}, p.judul),
+    el('span', {}, p.kategori),
+    el('span', {}, p.teknologi.join(', '))
+  ]));
 });
 
 render();
