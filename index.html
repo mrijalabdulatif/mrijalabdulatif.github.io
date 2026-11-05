@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhamad Rijal Abdulatif - Web Developer</title>
+<meta name="description" content="Portofolio Muhamad Rijal Abdulatif, Web Developer: company profile, sistem transportasi hauling, dan website toko online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F6F8; --surface:#FFFFFF; --ink:#0F1B2D; --muted:#55667A;
+  --line:#D9E0E8; --accent:#1F5FBF; --accent-ink:#FFFFFF; --soft:#E6EDF6;
+  --display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'DM Sans','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1622; --surface:#152133; --ink:#EAF0F7; --muted:#9AABBE;
+    --line:#26364B; --accent:#6EA2F0; --accent-ink:#0E1622; --soft:#1B2A40;
+  }
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.65;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--display);line-height:1.15;letter-spacing:-.02em}
+
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--display);font-weight:700;text-decoration:none}
+nav{display:flex;gap:26px;font-size:15px}
+nav a{text-decoration:none;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+.hero{padding:88px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,6.4vw,72px);font-weight:700}
+.hero p.lead{margin:22px 0 32px;font-size:19px;color:var(--muted);max-width:30em}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 24px;border-radius:10px;font-weight:600;text-decoration:none;font-size:16px}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border:1.5px solid var(--line);background:var(--surface)}
+.btn.ghost:hover{border-color:var(--accent)}
+
+.frame{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.frame .bar{display:flex;gap:6px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--soft)}
+.frame .bar i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.hero .frame{box-shadow:0 24px 60px -28px rgba(15,27,45,.45);transform:rotate(1.5deg)}
+.facts{list-style:none;padding:26px;display:grid;gap:18px}
+.facts li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:14px}
+.facts li:last-child{border:0;padding:0}
+.facts b{font-family:var(--display);font-size:18px}
+.facts span{color:var(--muted);text-align:right;font-size:15px}
+
+section{padding:72px 0;border-top:1px solid var(--line)}
+section h2{font-size:clamp(28px,4vw,40px);margin-bottom:12px}
+section .sub{color:var(--muted);max-width:36em;margin-bottom:40px}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{padding:26px;background:var(--surface);border:1px solid var(--line);border-radius:12px}
+.service h3{font-size:21px;margin-bottom:8px}
+.service p{color:var(--muted);font-size:16px}
+
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{font:inherit;font-size:15px;padding:8px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px}
+.project .shot{aspect-ratio:16/10;background:var(--soft);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:14px;text-align:center;padding:16px}
+.project .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.project .info{padding:20px 22px 24px}
+.project h3{font-size:20px;margin-bottom:6px}
+.project p{color:var(--muted);font-size:15.5px;margin-bottom:14px}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tags span{font-size:13px;padding:3px 10px;border-radius:6px;background:var(--soft)}
+.project a.visit{font-weight:600;font-size:15px;color:var(--accent);text-decoration:none}
+.project a.visit:hover{text-decoration:underline}
+
+.stack{display:flex;flex-wrap:wrap;gap:10px}
+.stack span{padding:9px 16px;border:1px solid var(--line);background:var(--surface);border-radius:10px;font-weight:500;font-size:15.5px}
+
+.contact{background:var(--ink);color:var(--bg);border-top:0}
+.contact h2{color:var(--bg)}
+.contact .sub{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.contact .btn.primary{background:var(--bg);color:var(--ink)}
+.contact .btn.ghost{background:transparent;border-color:color-mix(in srgb,var(--bg) 35%,transparent);color:var(--bg)}
+footer{padding:26px 0;color:var(--muted);font-size:14px;text-align:center}
+
+@media (max-width:820px){
+  .hero{padding:48px 0}
+  .hero .wrap{grid-template-columns:1fr}
+  .hero .frame{transform:none}
+  .services{grid-template-columns:1fr}
+  nav{gap:16px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#atas">Rijal</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#layanan">Layanan</a>
+      <a href="#proyek">Proyek</a>
+      <a href="#teknologi">Teknologi</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </div>
+</header>
+
+<main id="atas">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Muhamad Rijal Abdulatif</h1>
+        <p class="lead">Web Developer yang membangun company profile, sistem operasional perusahaan, dan toko online yang rapi, cepat, dan mudah dipakai.</p>
+        <div class="btns">
+          <a class="btn primary" href="#proyek">Lihat proyek saya</a>
+          <a class="btn ghost" href="#kontak">Hubungi saya</a>
+        </div>
+      </div>
+      <div class="frame" aria-label="Ringkasan">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <ul class="facts">
+          <li><b>Company profile</b><span>Website perusahaan</span></li>
+          <li><b>Sistem hauling</b><span>Transportasi &amp; operasional</span></li>
+          <li><b>Toko online</b><span>Katalog, order, pembayaran</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <section id="layanan">
+    <div class="wrap">
+      <h2>Yang bisa saya kerjakan</h2>
+      <p class="sub">Dari tampilan yang menyampaikan citra perusahaan sampai sistem yang menjalankan operasional harian.</p>
+      <div class="services">
+        <div class="service">
+          <h3>Company profile</h3>
+          <p>Website perusahaan yang jelas menjelaskan layanan Anda, tampil baik di ponsel, dan mudah diperbarui.</p>
+        </div>
+        <div class="service">
+          <h3>Sistem transportasi hauling</h3>
+          <p>Aplikasi web untuk mengelola armada, sopir, pengiriman, dan laporan operasional dalam satu tempat.</p>
+        </div>
+        <div class="service">
+          <h3>Website toko online</h3>
+          <p>Toko online dengan katalog produk, keranjang, dan proses pemesanan yang sederhana bagi pembeli.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyek">
+    <div class="wrap">
+      <h2>Proyek yang pernah saya buat</h2>
+      <p class="sub">Sebagian karya terbaru. Klik proyek untuk melihat versi langsungnya.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter proyek"></div>
+      <div class="projects" id="projects"></div>
+    </div>
+  </section>
+
+  <section id="teknologi">
+    <div class="wrap">
+      <h2>Teknologi yang saya gunakan</h2>
+      <p class="sub">Alat yang saya pakai sehari-hari untuk membangun dan merawat website serta sistem.</p>
+      <div class="stack">
+        <span>PHP</span><span>Laravel</span><span>MySQL</span><span>JavaScript</span>
+        <span>Node.js</span><span>React</span><span>Next.js</span><span>Flutter</span>
+        <span>REST API</span><span>Git &amp; GitHub</span><span>Docker</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontak">
+    <div class="wrap">
+      <h2>Punya proyek website atau sistem?</h2>
+      <p class="sub">Ceritakan kebutuhan Anda. Saya akan membalas dengan gambaran solusi dan perkiraan waktu pengerjaan.</p>
+      <div class="btns">
+        <!-- GANTI: email, nomor WhatsApp, GitHub, dan LinkedIn Anda -->
+        <a class="btn primary" href="mailto:emailanda@example.com">Kirim email</a>
+        <a class="btn ghost" href="https://wa.me/628123456789">WhatsApp</a>
+        <a class="btn ghost" href="https://github.com/usernameanda">GitHub</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/usernameanda">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="tahun"></span> Muhamad Rijal Abdulatif</footer>
+
+<script>
+/* ==========================================================
+   DAFTAR PROYEK – edit bagian ini saja.
+   - gambar: taruh screenshot di folder "images/" lalu isi nama filenya
+     (rekomendasi rasio 16:10, mis. 1280x800 px, format .webp/.jpg)
+   - link: alamat website langsung; kosongkan ("") jika tidak ada
+   - kategori: "Company Profile", "Sistem", atau "Toko Online"
+   Tambah proyek baru dengan menyalin satu blok { ... }.
+   ========================================================== */
+const proyek = [
+  {
+    judul: "Papyrus Photo",
+    kategori: "Company Profile",
+    deskripsi: "Website profil perusahaan dengan halaman layanan, galeri, dan formulir kontak.",
+    teknologi: ["PHP", "MySQL"],
+    gambar: "images/company-profile-1.jpg",
+    link: ""
+  },
+  {
+    judul: "Sistem Transportasi Hauling",
+    kategori: "Sistem",
+    deskripsi: "Aplikasi web untuk mengelola armada, sopir, pengiriman, dan laporan hauling.",
+    teknologi: ["Laravel", "MySQL"],
+    gambar: "images/hauling-1.jpg",
+    link: ""
+  },
+  {
+    judul: "Terve Chocolate",
+    kategori: "Toko Online cokelat",
+    deskripsi: "Toko online dengan katalog produk, keranjang belanja, dan pemesanan.",
+    teknologi: ["Laravel", "JavaScript"],
+    gambar: "images/toko-online-1.jpg",
+    link: ""
+  }
+];
+
+const grid = document.getElementById('projects');
+const filters = document.getElementById('filters');
+const kategori = ['Semua', ...new Set(proyek.map(p => p.kategori))];
+let aktif = 'Semua';
+
+function el(tag, attrs = {}, children = []) {
+  const n = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) n.setAttribute(k, v);
+  [].concat(children).forEach(c => n.append(c));
+  return n;
+}
+
+function render() {
+  grid.replaceChildren();
+  proyek.filter(p => aktif === 'Semua' || p.kategori === aktif).forEach(p => {
+    const shot = el('div', { class: 'shot' });
+    const img = el('img', { src: p.gambar, alt: 'Tampilan proyek ' + p.judul, loading: 'lazy' });
+    img.onerror = () => shot.replaceChildren('Screenshot belum ditambahkan');
+    shot.append(img);
+
+    const info = el('div', { class: 'info' }, [
+      el('h3', {}, p.judul),
+      el('p', {}, p.deskripsi),
+      el('div', { class: 'tags' }, p.teknologi.map(t => el('span', {}, t)))
+    ]);
+    if (p.link) info.append(el('a', { class: 'visit', href: p.link, target: '_blank', rel: 'noopener' }, 'Kunjungi website'));
+
+    const card = el('article', { class: 'frame project' }, [
+      el('div', { class: 'bar' }, [el('i'), el('i'), el('i')]),
+      shot, info
+    ]);
+    grid.append(card);
+  });
+}
+
+kategori.forEach(k => {
+  const b = el('button', { type: 'button', 'aria-pressed': k === aktif }, k);
+  b.onclick = () => {
+    aktif = k;
+    filters.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    render();
+  };
+  filters.append(b);
+});
+
+render();
+document.getElementById('tahun').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
